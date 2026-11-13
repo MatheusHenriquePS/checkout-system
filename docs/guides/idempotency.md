@@ -1,4 +1,4 @@
-# Etapa 3 — Idempotência
+# Idempotência
 
 Cliente manda `X-Idempotency-Key` (um UUID por tentativa de compra). Mesma key de novo → mesma resposta, sem segundo pedido.
 

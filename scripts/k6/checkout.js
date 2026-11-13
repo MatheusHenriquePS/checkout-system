@@ -3,8 +3,8 @@ import { check, sleep } from "k6";
 import { uuidv4 } from "https://jslib.k6.io/k6-utils/1.4.0/index.js";
 
 /**
- * Carga no ingresso: POST /checkout → esperado 202.
- * Worker e estoque: validar no Postgres após o teste (docs/etapa-8-k6.md).
+ * Ingress load: POST /checkout — expect 202.
+ * Postgres validation after the run: docs/guides/load-testing-k6.md
  */
 
 const baseUrl = __ENV.BASE_URL || "http://127.0.0.1:8080";

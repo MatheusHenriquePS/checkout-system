@@ -1,4 +1,4 @@
-# Etapa 7 — Pagamento simulado
+# Pagamento simulado
 
 No Worker: cobrança fake → se ok, estoque atômico → `PAID` ou `FAILED`.
 

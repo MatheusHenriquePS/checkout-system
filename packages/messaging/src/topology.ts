@@ -7,8 +7,8 @@ import {
 } from "./queues.js";
 
 /**
- * Garante fila principal + DLQ. API e Worker devem chamar com os mesmos argumentos.
- * Se a fila já existir com outros args, apague no RabbitMQ UI e recrie.
+ * Asserts main queue + DLQ. API and Worker must use the same arguments.
+ * If a queue already exists with different args, delete it in RabbitMQ UI and recreate.
  */
 export async function assertCheckoutTopology(
   channel: Channel,

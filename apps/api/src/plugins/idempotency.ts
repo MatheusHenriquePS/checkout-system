@@ -13,7 +13,7 @@ type IdempotencyRecord =
 
 declare module "fastify" {
   interface FastifyContextConfig {
-    /** Rotas que exigem X-Idempotency-Key e cacheiam a resposta no Redis. */
+    /** Routes that require X-Idempotency-Key and cache the response in Redis. */
     idempotency?: boolean;
   }
 

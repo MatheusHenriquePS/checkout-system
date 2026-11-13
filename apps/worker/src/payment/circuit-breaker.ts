@@ -9,8 +9,8 @@ export type CircuitBreakerOptions = {
 };
 
 /**
- * Protege o Worker de martelar um gateway indisponível.
- * closed → falhas acumulam; open → rejeita rápido; half-open → uma tentativa de teste.
+ * Stops the worker from hammering an unavailable gateway.
+ * closed → failures accumulate; open → fast reject; half-open → single probe.
  */
 export class CircuitBreaker {
   private state: CircuitState = "closed";

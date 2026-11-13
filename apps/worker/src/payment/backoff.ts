@@ -2,7 +2,7 @@ export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/** Tentativa 1-based; jitter leve para evitar thundering herd. */
+/** 1-based attempt; light jitter to reduce thundering herd. */
 export function computeBackoffMs(
   attempt: number,
   baseMs: number,

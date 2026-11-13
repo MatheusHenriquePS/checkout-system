@@ -1,7 +1,3 @@
--- Checkout System — schema inicial (Etapa 4)
--- Rode via: ./scripts/db/apply-manual-schema.sh
--- Ou cole no psql conectado ao database checkout.
-
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 CREATE TYPE "OrderStatus" AS ENUM ('PENDING', 'PAID', 'FAILED');

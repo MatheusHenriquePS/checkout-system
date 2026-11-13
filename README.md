@@ -8,6 +8,8 @@ No frontend by design — validate with Insomnia/curl, DBeaver, and k6.
 
 Architecture: **[docs/architecture.md](docs/architecture.md)**
 
+Topic walkthroughs in **[docs/guides/](docs/guides/)** are in **Portuguese** (personal study notes).
+
 <p align="center">
   <img src="docs/assets/checkout-202-insomnia.png" alt="Insomnia: POST /checkout returns 202 Accepted" width="720">
 </p>
@@ -82,11 +84,12 @@ packages/messaging
 scripts/db        # manual SQL before Prisma
 scripts/k6
 docs/
+  guides/         # topic notes (Portuguese)
 ```
 
 ## Load testing (k6)
 
-Requires `brew install k6`, API + Worker running, and enough stock. See **[docs/etapa-8-k6.md](docs/etapa-8-k6.md)**.
+Requires `brew install k6`, API + Worker running, and enough stock. See **[docs/guides/load-testing-k6.md](docs/guides/load-testing-k6.md)**.
 
 ```bash
 K6_SMOKE=1 pnpm k6:checkout   # 15s, 3 VUs
@@ -106,19 +109,19 @@ Example on a local run: ~9.5k requests, **p95 ~22 ms** on the API, **0%** HTTP f
 
 ## Screenshots
 
-**[docs/assets/](docs/assets/)** — Insomnia (202), DBeaver (k6 backlog), k6 smoke, RabbitMQ queues + DLQ.
+**[docs/assets/](docs/assets/)** — Insomnia (202), DBeaver (k6 backlog), k6 smoke + ramp summaries, RabbitMQ queues + DLQ.
 
-## Docs (build notes)
+## Docs
 
 | | |
 |--|--|
-| [architecture.md](docs/architecture.md) | overview |
-| [etapa-3-idempotencia.md](docs/etapa-3-idempotencia.md) | Redis idempotency |
-| [etapa-4-criar-tabelas.md](docs/etapa-4-criar-tabelas.md) | SQL + Prisma |
-| [etapa-5-worker.md](docs/etapa-5-worker.md) | RabbitMQ consumer |
-| [etapa-6-estoque.md](docs/etapa-6-estoque.md) | `order_items`, concurrency |
-| [etapa-7-gateway.md](docs/etapa-7-gateway.md) | simulated payment |
-| [etapa-8-k6.md](docs/etapa-8-k6.md) | API load tests |
+| [architecture.md](docs/architecture.md) | overview (English) |
+| [idempotency.md](docs/guides/idempotency.md) | Redis idempotency (PT) |
+| [database-schema.md](docs/guides/database-schema.md) | SQL + Prisma (PT) |
+| [worker.md](docs/guides/worker.md) | RabbitMQ consumer (PT) |
+| [inventory.md](docs/guides/inventory.md) | `order_items`, concurrency (PT) |
+| [payment-gateway.md](docs/guides/payment-gateway.md) | simulated payment (PT) |
+| [load-testing-k6.md](docs/guides/load-testing-k6.md) | API load tests (PT) |
 
 SQL scripts: `pnpm db:schema`, `pnpm db:order-items`, `pnpm db:order-failure-reason`, `pnpm db:generate`.
 

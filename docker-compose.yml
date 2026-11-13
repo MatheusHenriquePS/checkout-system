@@ -1,5 +1,4 @@
-# Checkout System — infraestrutura local (Etapa 1)
-# API e Worker entram a partir da Etapa 2/5.
+# Local dev: Postgres, Redis, RabbitMQ (API and Worker run on the host).
 name: checkout-system
 
 services:

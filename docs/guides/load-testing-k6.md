@@ -1,4 +1,4 @@
-# Etapa 8 — k6
+# k6
 
 O script `scripts/k6/checkout.js` martela o `POST /checkout`. Ele **não** espera `PAID`: isso é trabalho do Worker. Depois do teste, olhe `orders` e a fila no RabbitMQ.
 

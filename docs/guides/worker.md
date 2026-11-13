@@ -1,4 +1,4 @@
-# Etapa 5 — Worker
+# Worker
 
 O Worker lê `checkout.orders`. Só dá **ack** depois de processar; se cair no meio, a mensagem volta.
 
@@ -12,7 +12,7 @@ pnpm dev:api    # terminal 1
 pnpm dev:worker # terminal 2
 ```
 
-Insomnia: `POST /checkout` com `X-Idempotency-Key` e body com `items` (etapa 6).
+Insomnia: `POST /checkout` com `X-Idempotency-Key` e body com `items` (ver [inventory.md](inventory.md)).
 
 ```sql
 SELECT id, status FROM orders ORDER BY created_at DESC LIMIT 5;

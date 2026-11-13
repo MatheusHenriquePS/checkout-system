@@ -1,4 +1,4 @@
-# Etapa 6 — Estoque
+# Estoque
 
 Baixar estoque na API com duas requests ao mesmo tempo = overselling. A API só valida que o produto existe; o decremento atômico fica no Worker:
 
@@ -8,7 +8,7 @@ SET stock_quantity = stock_quantity - :qty
 WHERE id = :id AND stock_quantity >= :qty;
 ```
 
-Zero linhas afetadas → `FAILED` (ou `INSUFFICIENT_STOCK_AFTER_PAYMENT` depois da etapa 7).
+Zero linhas afetadas → `FAILED` (ou `INSUFFICIENT_STOCK_AFTER_PAYMENT` depois do [payment gateway](payment-gateway.md)).
 
 ## Tabela `order_items`
 

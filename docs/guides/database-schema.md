@@ -1,4 +1,4 @@
-# Etapa 4 — Postgres na mão + Prisma
+# Postgres na mão + Prisma
 
 Primeiro o SQL no banco; depois o `schema.prisma` só espelha o que já existe. Prisma não cria as tabelas neste projeto — ele gera o client TypeScript.
 

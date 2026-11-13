@@ -1,4 +1,4 @@
-/** Erro que não deve retentar — mensagem vai para DLQ (nack sem requeue). */
+/** Non-retryable error — message goes to DLQ (nack without requeue). */
 export class PermanentProcessingError extends Error {
   readonly permanent = true;
 
@@ -9,7 +9,7 @@ export class PermanentProcessingError extends Error {
 }
 
 /**
- * Falha transitória após retries no Worker — pedido permanece PENDING; fila faz requeue.
+ * Transient failure after worker retries — order stays PENDING; queue requeues.
  */
 export class TransientProcessingError extends Error {
   readonly transient = true;

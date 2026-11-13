@@ -22,7 +22,7 @@ function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
   });
 }
 
-/** Gateway simulado: latência, falha aleatória, timeout e idempotência por orderId. */
+/** Simulated gateway: latency, random failure, timeout, idempotency keyed by orderId. */
 export class FakePaymentGateway implements PaymentGateway {
   private readonly approvals = new Map<string, string>();
 
@@ -46,7 +46,7 @@ export class FakePaymentGateway implements PaymentGateway {
       throw new PaymentUnavailableError("payment_gateway_error");
     }
 
-    // ~5% recusa definitiva (cartão recusado) — não vale retry infinito.
+    // ~5% hard decline (card_declined) — no infinite retry.
     if (Math.random() < 0.05) {
       return { status: "declined", reason: "card_declined" };
     }

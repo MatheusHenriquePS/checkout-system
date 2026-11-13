@@ -1,8 +1,3 @@
--- Etapa 6 — itens do pedido (N produtos por checkout)
--- Rode após 001_initial_schema.sql:
---   ./scripts/db/apply-order-items.sh
--- Ou cole no DBeaver / psql.
-
 CREATE TABLE IF NOT EXISTS order_items (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   order_id UUID NOT NULL REFERENCES orders (id) ON DELETE CASCADE,

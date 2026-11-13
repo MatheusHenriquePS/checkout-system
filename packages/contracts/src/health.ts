@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-/** Resposta padrão de healthcheck — API e Worker podem estender depois. */
+/** Default healthcheck response — API and Worker may extend later. */
 export const healthResponseSchema = z.object({
   status: z.literal("ok"),
   service: z.enum(["api", "worker"]),
