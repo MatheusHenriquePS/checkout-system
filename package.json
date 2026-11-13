@@ -1,0 +1,19 @@
+{
+  "name": "checkout-system",
+  "private": true,
+  "scripts": {
+    "dev:api": "pnpm build && pnpm --filter @checkout/api dev",
+    "dev:worker": "pnpm build && pnpm --filter @checkout/worker dev",
+    "db:schema": "./scripts/db/apply-manual-schema.sh",
+    "db:order-items": "./scripts/db/apply-order-items.sh",
+    "db:order-failure-reason": "./scripts/db/apply-order-failure-reason.sh",
+    "db:generate": "pnpm --filter @checkout/database db:generate",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "k6:checkout": "k6 run scripts/k6/checkout.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.15.9"
+}

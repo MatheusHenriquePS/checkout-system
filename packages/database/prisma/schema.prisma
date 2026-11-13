@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+enum OrderFailureReason {
+  PAYMENT_DECLINED
+  INSUFFICIENT_STOCK_AFTER_PAYMENT
+}
+
+model Product {
+  id            String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String
+  priceCents    Int         @map("price_cents")
+  stockQuantity Int         @map("stock_quantity")
+  createdAt     DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  orderItems    OrderItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id            String      @id @db.Uuid
+  customerEmail String      @map("customer_email")
+  status        OrderStatus         @default(PENDING)
+  failureReason OrderFailureReason? @map("failure_reason")
+  failureDetail String?             @map("failure_detail")
+  createdAt     DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime    @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  items         OrderItem[]
+
+  @@index([status], map: "orders_status_idx")
+  @@index([createdAt(sort: Desc)], map: "orders_created_at_idx")
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  orderId   String  @map("order_id") @db.Uuid
+  productId String  @map("product_id") @db.Uuid
+  quantity  Int
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@unique([orderId, productId], map: "order_items_order_product_unique")
+  @@index([orderId], map: "order_items_order_id_idx")
+  @@index([productId], map: "order_items_product_id_idx")
+  @@map("order_items")
+}
