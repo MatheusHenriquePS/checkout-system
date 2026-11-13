@@ -1,5 +1,7 @@
 # Checkout System
 
+> **Português (BR):** [README.pt-BR.md](README.pt-BR.md)
+
 HTTP checkout API that accepts orders quickly (`202`) and processes payment and stock in a separate **Worker** behind RabbitMQ. PostgreSQL is the source of truth; Redis handles idempotency on `POST /checkout`.
 
 No frontend by design — validate with Insomnia/curl, DBeaver, and k6.
